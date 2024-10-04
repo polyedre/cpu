@@ -1,0 +1,32 @@
+You have to prove you understood the architecture guide.
+
+You are asked to write a small program which sum an array of integers.
+
+    * r0 will be initialized to a random memory address
+    * r1 will be initialized to a random number
+
+If r6 contains the sum of the r1 elements of the array starting at the address
+contained in r0, you'll receive a present.
+
+You have to submit your binary to the URL specified in the maze.
+curl can be a useful friend, ex:
+    curl -X POST --data-binary @cpu-build-2.bin http://__URL__/cpu-build-2
+
+
+   r0 = start pos
+   r1 = random number
+   r2 = 0
+loop:
+   r4 = *(r0)
+   r5 = 1
+   r0 += r5
+   r2 += r4 number donc r4
+
+   r3 = 0
+   CMP r1, r3
+   JUMP EQ end
+   JUMP NEQ loop
+
+
+end
+r6 = r2

@@ -1,0 +1,28 @@
+This time, the note looks harder to read but there is a translation guide near it.
+
+Same as earlier, it generates a number in register 0.
+Can you find it?
+
+ovhack#__NUMBER__#cpu-intro-2#1of1
+
+r6 = r0 + r1 + r2 * r3
+
+r0
+r1
+r2
+r3
+r6
+
+r0 += r1 | 0100 0000 0010 0000
+r2 *= r3 | 0101 0010 0110 0000
+r0 += r2 | 0100 0000 0100 0000
+r6 = r0  | 0001 0110 0000 0000
+
+01000000
+00100000
+01010010
+01100000
+01000000
+01000000
+00010110
+00000000

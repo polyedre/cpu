@@ -1,0 +1,52 @@
+Instruction Set Architecture - Chapter 2
+
+* Stack Register: r7, initialized at 0xFEFE on boot
+* Stack Direction: down
+
+Instructions
+============
+
+Control
+-------
+
+* CALL.COND [imm addr]
+    [PC]      [PC+1]    [PC+2]
+    1001 0CCC AAAA AAAA BBBB BBBB
+
+    CCC == 000 => ALWAYS
+    CCC == 001 => EQ
+    CCC == 010 => NE
+    CCC == 011 => LE 
+    CCC == 100 => LT 
+    CCC == 101 => GE 
+    CCC == 110 => GT
+    
+    If the conditon is met:
+        *(Register(7)) = PC + 3
+        Register(7) -= 2
+        PC = (AAAAAAAABBBBBBBB)
+    else
+        PC += 3
+
+* RET
+    [PC]
+    1010 0000
+
+    Register(7) += 2
+    PC = *(Register(7))
+
+* PUSH rX
+    [PC]
+    1100 0XXX
+
+    *(Register(7)) = Register(XXX)
+    Register(7) -= 2
+    PC += 1
+
+* POP rX
+    [PC]
+    1100 1XXX
+
+    Register(7) += 2
+    Register(XXX) = *(Register(7))
+    PC += 1
